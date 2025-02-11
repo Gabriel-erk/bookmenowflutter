@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,19 +13,23 @@ class AutenticacaoController with ChangeNotifier {
 
     notifyListeners();
 
-    final resposta = await http
-        .post(Uri.parse('http:// 10.56.46.42/pbookmenowapi.test/api/login'),
-         headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'aplication/json', // transforma em json
-    }, body: {
-      'email': email,
-      'password': senha,
-    });
+    final resposta = await http.post(
+      Uri.parse('http://10.56.46.42/public/api/login'),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json', // transforma em json
+      },
+      body: jsonEncode(
+        {
+          'email': email,
+          'password': senha,
+        },
+      ),
+    );
     _carregando = false;
 
     notifyListeners();
-    if (resposta == 200) {
+    if (resposta.statusCode == 200) {
       return true;
     } else {
       return false;
