@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class AutenticacaoController with ChangeNotifier {
-  bool _carregando = false;
+  bool _carregando =
+      false; // váriavel para indicar se a autenticação está em andamento
+  String?
+      _token; // por conta do _ ele é uma váriavel privada e será acessada por outra classe (servico)
 
   bool get carregando => _carregando;
+
+  String? get token => _token;
 
   Future acessar(String email, String senha) async {
     _carregando = false;
@@ -30,7 +35,10 @@ class AutenticacaoController with ChangeNotifier {
 
     notifyListeners();
     if (resposta.statusCode == 200) {
-      return true;
+      final dados = jsonDecode(resposta.body);
+      _token = dados['token'];
+      notifyListeners();
+      return true; // retorna verdadeiro se a autenticação deu certo
     } else {
       return false;
     }

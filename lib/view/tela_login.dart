@@ -68,7 +68,7 @@ class _TelaLoginEstado extends State<TelaLogin> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const TelaServico()),
+                                  builder: (context) => TelaServico()),
                             );
                           } else {
                             // se não der para logar (caso digite um e-mail e senha que não existam), aparece uma mini barra (tipo um alert) dizendo que "erro ao fazer o login"
