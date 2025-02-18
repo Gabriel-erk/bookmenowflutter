@@ -2,8 +2,8 @@ class Fotos {
   int? id;
   String? imagem;
   int? servicoId;
-  Null? createdAt;
-  Null? updatedAt;
+  Null createdAt;
+  Null updatedAt;
 
   Fotos({this.id, this.imagem, this.servicoId, this.createdAt, this.updatedAt});
 

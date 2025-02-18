@@ -20,6 +20,7 @@ class AutenticacaoController with ChangeNotifier {
 
     final resposta = await http.post(
       Uri.parse('http://10.56.46.42/public/api/login'),
+      // Uri.parse('http://192.168.0.5/public/api/login'),
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json', // transforma em json

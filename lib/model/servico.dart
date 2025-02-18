@@ -18,8 +18,8 @@ class Servico {
   String? cep;
   int? usuarioId;
   int? categoriaId;
-  Null? createdAt;
-  Null? updatedAt;
+  Null createdAt;
+  Null updatedAt;
   List<Fotos>? fotos;
 
   Servico(
